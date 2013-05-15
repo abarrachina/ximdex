@@ -242,7 +242,7 @@ class Root extends xObject {
 	*  @return unknown
 	*/
 
-	function CreateNode($name, $parentID, $nodeTypeID) {
+	function CreateNode($name = null, $parentID = null, $nodeTypeID = null) {
 		$this->UpdatePath();
 		return;
 	}
@@ -291,7 +291,7 @@ class Root extends xObject {
 	*  @return unknown
 	*/
 
-	function RenameNode($name) {
+	function RenameNode($name = null) {
 		$this->UpdatePath();
 		return;
 	}
@@ -316,7 +316,7 @@ class Root extends xObject {
 
 	function getAll() {
 
-		$query = sprintf("SELECT * FROM Nodes WHERE IdNodeType = %d", $this->parent->get('IdNodeType'));
+		$query = sprintf("SELECT IdNode,Name FROM Nodes WHERE IdNodeType = %d", $this->parent->get('IdNodeType'));
 		$this->dbObj->query($query);
 		$return = NULL;
 		while(!$this->dbObj->EOF) {
