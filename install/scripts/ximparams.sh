@@ -109,7 +109,7 @@ function setHost
 
   test=$(wget --spider $XIMDEX_PARAMS_HOST/README.md 2>/dev/null)
 
-   if [ $? = 0 ] &&  [ -n "$XIMDEX_PARAMS_HOST" ]
+   if [ -n "$XIMDEX_PARAMS_HOST" ]
 	then
 		sql "UPDATE Config SET ConfigValue='$XIMDEX_PARAMS_HOST' WHERE ConfigKEY='UrlRoot';"
 		next_step
